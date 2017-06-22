@@ -1,5 +1,7 @@
 FROM php:7.0-fpm
 WORKDIR /www
+ARG USER_ID=0
+ENV PARENT_USER ${USER_ID}
 
 # Install developer dependencies
 RUN set -xe \
@@ -41,17 +43,14 @@ RUN set -xe \
    && pecl install imagick \
    && docker-php-ext-enable imagick \
    && rm -r /var/lib/apt/lists/* \
-   && usermod -u 1000 www-data \
-   && yes | pecl install xdebug \
-   && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-   && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-   && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
-   && echo "xdebug.remote_connect_back=On" >> /usr/local/etc/php/conf.d/xdebug.ini \
-   && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/xdebug.ini
+   && usermod -u 1000 www-data
 
 # Yii2 specific commands
 RUN set -xe \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer global require "fxp/composer-asset-plugin:^1.2.0"
+
+RUN touch /usr/local/var/log/php-fpm.log && chown $PARENT_USER:$PARENT_USER /usr/local/var/log/php-fpm.log
+USER $PARENT_USER
 
 CMD ["bash", "/deploy.sh"]

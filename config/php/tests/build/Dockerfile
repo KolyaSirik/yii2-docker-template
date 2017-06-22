@@ -1,5 +1,7 @@
 FROM php:7.0-fpm
 WORKDIR /www
+ARG USER_ID=0
+ENV PARENT_USER ${USER_ID}
 
 # Install developer dependencies
 RUN set -xe \
@@ -63,5 +65,8 @@ RUN set -xe \
    && apt-get install nodejs \
    && npm install apidoc -g \
    && rm -r /var/lib/apt/lists/*
+
+RUN touch /usr/local/var/log/php-fpm.log && chown $PARENT_USER:$PARENT_USER /usr/local/var/log/php-fpm.log
+USER $PARENT_USER
 
 CMD ["bash", "/deploy.sh"]

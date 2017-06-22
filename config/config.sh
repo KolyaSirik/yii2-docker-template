@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 export COMPOSE_PROJECT_NAME='example_project'
 export MY_IP_ADDR=`hostname -I | sed 's/ .*//'`
+export USER_ID="`id -u`"
 
 while [[ $# -gt 1 ]]; do
 key="$1"

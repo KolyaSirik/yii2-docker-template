@@ -5,8 +5,9 @@ while ! mysqladmin ping -h "mysql_local" --password="root" --user="root" --silen
     echo "Waiting for mysql...";
     sleep 1;
 done
-sleep 5
+sleep 1
 
 php yii migrate/up --interactive=0
 php yii config/init
+
 php-fpm

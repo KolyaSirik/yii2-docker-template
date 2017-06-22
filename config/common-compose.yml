@@ -5,9 +5,11 @@ services:
     ports:
       - '12421:80'
   php:
+    volumes:
+     - "/etc/passwd:/etc/passwd:ro"
     working_dir: /www/
     environment:
-      - ICU_DATA=/opt/icu/
+      ICU_DATA: "/opt/icu/"
   mysql:
      image: mariadb:10.1.22
      restart: always

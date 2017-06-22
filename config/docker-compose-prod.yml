@@ -14,7 +14,10 @@ services:
     extends:
       file: common-compose.yml
       service: php
-    build: ./php/prod/build
+    build:
+      context: ./php/prod/build
+      args:
+        USER_ID: "${USER_ID}"
     volumes:
       - ../app:/www
       - ./php/prod/build/deploy.sh:/deploy.sh
