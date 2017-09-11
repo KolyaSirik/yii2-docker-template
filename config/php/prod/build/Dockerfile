@@ -1,4 +1,4 @@
-FROM php:7.0-fpm
+FROM php:7.1-fpm
 WORKDIR /www
 ARG USER_ID=0
 ENV PARENT_USER ${USER_ID}
@@ -6,7 +6,7 @@ ENV PARENT_USER ${USER_ID}
 # Install developer dependencies
 RUN set -xe \
     && apt-get update -yqq \
-    && apt-get install -y \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -yqq \
                             git \
                             libsqlite3-dev \
                             libxml2-dev \
@@ -17,8 +17,9 @@ RUN set -xe \
                             libpng12-dev \
                             libcurl4-gnutls-dev \
                             libbz2-dev \
-                            libssl-dev -yqq \
+                            libssl-dev \
                             mariadb-client \
+   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
    && docker-php-ext-install \
                              pdo_mysql \
                              opcache \
@@ -31,12 +32,9 @@ RUN set -xe \
                              mbstring \
                              mcrypt \
                              curl \
-   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-   && docker-php-ext-install gd \
-   && pecl install phar \
-   && docker-php-ext-install phar \
-   && pecl install intl \
-   && docker-php-ext-install intl \
+                             gd \
+                             phar \
+                             intl \
    && apt-get -y install \
             libmagickwand-dev \
         --no-install-recommends \
@@ -45,10 +43,7 @@ RUN set -xe \
    && rm -r /var/lib/apt/lists/* \
    && usermod -u 1000 www-data
 
-# Yii2 specific commands
-RUN set -xe \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer global require "fxp/composer-asset-plugin:^1.2.0"
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN touch /usr/local/var/log/php-fpm.log && chown $PARENT_USER:$PARENT_USER /usr/local/var/log/php-fpm.log
 USER $PARENT_USER
