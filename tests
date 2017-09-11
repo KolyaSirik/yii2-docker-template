@@ -4,6 +4,8 @@ IS_CONTAINER_EXIST=$(docker ps --filter "name=$TEST_CONTAINER" --format "{{.ID}}
 FILE='config/docker-compose-tests.yml'
 START_DATE=$(date +%s)
 
+export MY_IP_ADDR=`hostname -I | sed 's/ .*//'`
+export USER_ID="`id -u`"
 export COMPOSE_PROJECT_NAME='example_project'
 
 function waitForDeploy {
