@@ -13,9 +13,9 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.4.0",
-    "yiisoft/yii2": "^2.0",
+    "yiisoft/yii2": "~2.0.6",
     "yiisoft/yii2-bootstrap": "~2.0.0",
-    "yiisoft/yii2-swiftmailer": "~2.0.0",
+    "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
     "yiister/yii2-gentelella": "~1.0",
     "yii2mod/yii2-sweet-alert": "*"
   },
@@ -30,10 +30,10 @@
   "config": {
     "process-timeout": 1800
   },
-  "extra": {
-    "asset-installer-paths": {
-      "npm-asset-library": "vendor/npm",
-      "bower-asset-library": "vendor/bower"
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
     }
-  }
+  ]
 }

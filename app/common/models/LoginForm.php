@@ -1,20 +1,22 @@
 <?php
+
 namespace common\models;
 
 use Yii;
 use yii\base\Model;
 
 /**
- * Login form
+ * Class LoginForm
+ *
+ * @package common\models
  */
-class LoginForm extends Model
+abstract class LoginForm extends Model
 {
     public $username;
     public $password;
     public $rememberMe = true;
 
-    private $_user;
-
+    protected $_user;
 
     /**
      * @inheritdoc
@@ -67,12 +69,5 @@ class LoginForm extends Model
      *
      * @return User|null
      */
-    protected function getUser()
-    {
-        if ($this->_user === null) {
-            $this->_user = User::findByUsername($this->username);
-        }
-
-        return $this->_user;
-    }
+    abstract protected function getUser();
 }

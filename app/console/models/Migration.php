@@ -6,7 +6,7 @@
  * Time: 18:05
  */
 
-namespace console\migrations;
+namespace console\models;
 
 /**
  * Class Migration
