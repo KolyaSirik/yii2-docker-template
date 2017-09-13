@@ -1,3 +1,5 @@
+#### RUN `./install-once.sh` !!!
+
 # example_project
 
 ## Deploy
