@@ -7,7 +7,7 @@
 
 Environment is local by default.
 
-Your project will be able at [http://localhost:12421](http://localhost:12421)
+Your project will be available at [http://localhost:12421](http://localhost:12421)
 
 ## Run tests
 
