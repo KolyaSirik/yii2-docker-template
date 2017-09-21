@@ -16,6 +16,7 @@ find Readme.md -exec sed -i "s/12421/$PORT/g" {} +
 find Readme.md -exec sed -i "s/example_project/$PROJECT_NAME/g" {} +
 find Readme.md -exec sed -i "s/#### RUN \`.\/install-once.sh\` !!!//g" {} +
 find tests -exec sed -i "s/example_project/$PROJECT_NAME/g" {} +
+find analyse -exec sed -i "s/example_project/$PROJECT_NAME/g" {} +
 rm -rf .git
 rm install-once.sh
 
