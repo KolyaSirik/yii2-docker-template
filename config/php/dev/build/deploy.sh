@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-php init --env=Development --overwrite=All
 composer install
 while ! mysqladmin ping -h "mysql" --password="root" --user="root" --silent; do
     echo "Waiting for mysql...";
@@ -9,6 +8,7 @@ sleep 5
 
 cp environments/.env.dev .env
 
-php yii migrate/up --interactive=0
-php yii config/init
+php bin/yii migrate/up --interactive=0
+php bin/yii config/init
+
 php-fpm

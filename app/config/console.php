@@ -51,13 +51,16 @@ $config = [
         ],
     ],
     'params' => $params,
-    /*
     'controllerMap' => [
-        'fixture' => [ // Fixture generation command line.
-            'class' => 'yii\faker\FixtureController',
+        'fixture' => [
+            'class' => \yii\console\controllers\FixtureController::class,
+            'namespace' => 'app\fixtures'
+        ],
+        'migrate' => [
+            'class'        => 'yii\console\controllers\MigrateController',
+            'templateFile' => '@app/views/console/migration.php',
         ],
     ],
-    */
 ];
 
 if (YII_ENV_DEV) {
