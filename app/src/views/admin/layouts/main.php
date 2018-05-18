@@ -8,6 +8,7 @@ use yii\helpers\Url;
 use yii2mod\alert\Alert;
 \yii2mod\alert\AlertAsset::register($this);
 \app\assets\AdminAsset::register($this);
+\ramosisw\CImaterial\web\MaterialAsset::register($this);
 ?>
 <?php $this->beginPage(); ?>
     <!DOCTYPE html>
