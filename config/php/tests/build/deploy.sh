@@ -7,6 +7,8 @@ while ! mysqladmin ping -h "mysql_test" --password="root" --user="root" --silent
 done
 sleep 5
 
+cp environments/.env.tests .env
+
 php yii migrate/up --interactive=0
 php yii config/init
 echo "\nYour application ready.\n"

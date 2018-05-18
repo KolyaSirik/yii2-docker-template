@@ -7,6 +7,8 @@ while ! mysqladmin ping -h "mysql_prod" --password="root" --user="root" --silent
 done
 sleep 5
 
+cp environments/.env.prod .env
+
 php yii migrate/up --interactive=0
 php yii config/init
 php-fpm

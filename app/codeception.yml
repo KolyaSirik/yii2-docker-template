@@ -1,0 +1,20 @@
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+    log: runtime/logs
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+settings:
+    colors: true
+modules:
+    enabled:
+        - \Helper\Yii2:
+            configFile: 'config/tests.php'
+            part: ORM
+            transaction: false # don't wrap test in transaction
+            cleanup: false

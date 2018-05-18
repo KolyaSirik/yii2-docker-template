@@ -27,13 +27,16 @@
         "yiisoft/yii2": "2.1.x-dev",
         "yiisoft/yii2-jquery": "1.0.x-dev",
         "yiisoft/yii2-captcha": "1.0.x-dev",
-        "yiisoft/yii2-bootstrap": "2.2.x-dev",
-        "yiisoft/yii2-swiftmailer": "2.2.x-dev"
+        "yiisoft/yii2-swiftmailer": "2.2.x-dev",
+        "yiisoft/yii2-bootstrap4": "^1.0@dev",
+        "yiithings/yii2-dotenv": "*",
+        "yii2mod/yii2-sweet-alert": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "2.1.x-dev",
         "yiisoft/yii2-gii": "2.1.x-dev",
-        "phpunit/phpunit": "~7.0.2"
+        "phpunit/phpunit": "~7.0.2",
+        "codeception/codeception": "^2.4"
     },
     "repositories": [
         {

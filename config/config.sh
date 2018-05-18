@@ -25,16 +25,16 @@ fi
 
 if [ ${ENV} == 'local' ]; then
     FILE='config/docker-compose-local.yml'
-    YII_ENV='Local'
+    YII_ENV='dev'
 elif [ ${ENV} == 'dev' ]; then
     FILE='config/docker-compose-dev.yml'
-    YII_ENV='Development'
+    YII_ENV='dev'
 elif [ ${ENV} == 'prod' ]; then
     FILE='config/docker-compose-prod.yml'
-    YII_ENV='Production'
+    YII_ENV='prod'
 elif [ ${ENV} == 'test' ]; then
     FILE='config/docker-compose-tests.yml'
-    YII_ENV='Testing'
+    YII_ENV='test'
 else
     echo 'Environment not found.'
     exit 1
