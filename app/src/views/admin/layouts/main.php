@@ -31,34 +31,38 @@ use yii2mod\alert\Alert;
     <?php $this->beginBody(); ?>
 
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-background-color="black" data-image="/img/sidebar.jpg">
-            <div class="logo">
-                <a href="/admin" class="simple-text logo-normal">
-                    Awesome project
-                </a>
-            </div>
-            <div class="sidebar-wrapper">
-                <?= $this->render('leftColumn') ?>
-            </div>
-            <div class="sidebar-background" style="background-image: url(/img/sidebar.jpg) "></div>
-        </div>
-        <div class="main-panel">
-            <nav class="navbar navbar-transparent navbar-absolute">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#"> <?= $this->title ?> </a>
-                    </div>
-                    <div class="collapse navbar-collapse">
-
-                    </div>
+        <?php if (!Yii::$app->user->isGuest): ?>
+            <div class="sidebar" data-color="purple" data-background-color="black" data-image="/img/sidebar.jpg">
+                <div class="logo">
+                    <a href="/admin" class="simple-text logo-normal">
+                        Awesome project
+                    </a>
                 </div>
-            </nav>
+                <div class="sidebar-wrapper">
+                    <?= $this->render('leftColumn') ?>
+                </div>
+                <div class="sidebar-background" style="background-image: url(/img/sidebar.jpg) "></div>
+            </div>
+        <?php endif; ?>
+        <div class="main-panel">
+            <?php if (!Yii::$app->user->isGuest): ?>
+                <nav class="navbar navbar-transparent navbar-absolute">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"> <?= $this->title ?> </a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+
+                        </div>
+                    </div>
+                </nav>
+            <?php endif; ?>
 
             <div class="content">
                 <div class="container-fluid">

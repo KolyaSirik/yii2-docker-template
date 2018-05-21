@@ -14,7 +14,7 @@ class ConfigController extends Controller
 {
     public function actionInit()
     {
-        $this->initAdmin();
+//        $this->initAdmin();
     }
 
     protected function initAdmin()

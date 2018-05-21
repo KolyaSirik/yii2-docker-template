@@ -9,6 +9,25 @@ Environment is local by default.
 
 Your project will be available at [http://localhost:12421](http://localhost:12421)
 
+#### Admin dashboard template
+
+[Template](http://demos.creative-tim.com/bs3/material-dashboard-pro/examples/dashboard.html)
+
+#### Admin panel
+
+For using admin panel uncomment line with `$this->initAdmin();` in file `app/src/commands/ConfigController.php` and run `./deploy`
+
+##### Default credentials
+
+Username: `admin`
+Password: `admin`
+
+##### Changing password
+
+For change password run this command in console
+
+    php bin/yii user/reset-password <NEW_PASSWORD>
+
 ## Run tests
 
 `./tests [dev-mode]`
