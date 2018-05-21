@@ -1,3 +1,7 @@
+#### Admin dashboard template
+
+[Template](http://demos.creative-tim.com/bs3/material-dashboard-pro/examples/dashboard.html)
+
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">

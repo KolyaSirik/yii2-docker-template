@@ -19,7 +19,7 @@ class AdminAsset extends AssetBundle
     public $js = [
     ];
     public $depends = [
-        'yii\web\YiiAsset',
+        'yii\jquery\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
 }

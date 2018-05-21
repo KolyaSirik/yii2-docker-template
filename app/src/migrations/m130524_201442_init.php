@@ -14,8 +14,8 @@ class m130524_201442_init extends Migration
             'password_hash'        => $this->string()->notNull(),
             'password_reset_token' => $this->string()->unique(),
             'email'                => $this->string()->notNull()->unique(),
-            'role'                 => $this->smallInteger()->notNull()->defaultValue(User::ROLE['CUSTOMER']),
-            'status'               => $this->smallInteger()->notNull()->defaultValue(User::STATUS['ACTIVE']),
+            'role'                 => $this->smallInteger()->notNull()->defaultValue(User::ROLE_CUSTOMER),
+            'status'               => $this->smallInteger()->notNull()->defaultValue(User::STATUS_ACTIVE),
             'created_at'           => $this->integer()->notNull(),
             'updated_at'           => $this->integer()->notNull(),
         ]);

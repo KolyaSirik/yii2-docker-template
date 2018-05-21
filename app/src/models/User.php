@@ -26,14 +26,12 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const STATUS = [
-        'DELETED' => 2,
-        'ACTIVE'  => 4,
-    ];
-    const ROLE = [
-        'CUSTOMER' => 2,
-        'ADMIN'    => 4,
-    ];
+    const STATUS_DELETED = 2;
+    const STATUS_ACTIVE = 4;
+
+    const ROLE_CUSTOMER = 2;
+    const ROLE_ADMIN = 4;
+
     /**
      * @inheritdoc
      */
@@ -56,10 +54,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS['ACTIVE']],
-            ['status', 'in', 'range' => self::STATUS],
-            ['role', 'default', 'value' => self::ROLE['CUSTOMER']],
-            ['role', 'in', 'range' => self::ROLE],
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['role', 'default', 'value' => self::ROLE_CUSTOMER],
+            ['role', 'in', 'range' => [self::ROLE_CUSTOMER, self::ROLE_ADMIN]],
         ];
     }
     /**
@@ -67,7 +65,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS['ACTIVE']]);
+        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
     }
     /**
      * @inheritdoc
@@ -84,7 +82,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS['ACTIVE'], 'role' => self::ROLE['CUSTOMER']]);
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE, 'role' => self::ROLE_CUSTOMER]);
     }
     /**
      * Finds user by password reset token
@@ -99,7 +97,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
         return static::findOne([
             'password_reset_token' => $token,
-            'status'               => self::STATUS['ACTIVE'],
+            'status'               => self::STATUS_ACTIVE,
         ]);
     }
     /**

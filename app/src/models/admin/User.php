@@ -17,6 +17,6 @@ class User extends \app\models\User
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS['ACTIVE'], 'role' => self::ROLE['ADMIN']]);
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE, 'role' => self::ROLE_ADMIN]);
     }
 }

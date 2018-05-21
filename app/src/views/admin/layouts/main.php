@@ -8,7 +8,7 @@ use yii\helpers\Url;
 use yii2mod\alert\Alert;
 \yii2mod\alert\AlertAsset::register($this);
 \app\assets\AdminAsset::register($this);
-\ramosisw\CImaterial\web\MaterialAsset::register($this);
+\app\assets\MaterialAsset::register($this);
 ?>
 <?php $this->beginPage(); ?>
     <!DOCTYPE html>
@@ -29,81 +29,44 @@ use yii2mod\alert\Alert;
     </head>
     <body class="nav-md">
     <?php $this->beginBody(); ?>
-    <div class="container body">
-        <?= Alert::widget() ?>
-        <div class="main_container">
 
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view" style="width: 100%;">
-                    <br/>
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <?php if (!Yii::$app->user->isGuest): ?>
-                            <div class="menu_section">
-                                <h3>General</h3>
-                                <?= $this->render('leftColumn') ?>
-                            </div>
-                        <?php endif; ?>
+    <div class="wrapper">
+        <div class="sidebar" data-color="purple" data-background-color="black" data-image="/img/sidebar.jpg">
+            <div class="logo">
+                <a href="/admin" class="simple-text logo-normal">
+                    Awesome project
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <?= $this->render('leftColumn') ?>
+            </div>
+            <div class="sidebar-background" style="background-image: url(/img/sidebar.jpg) "></div>
+        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"> <?= $this->title ?> </a>
                     </div>
-                    <!-- /sidebar menu -->
+                    <div class="collapse navbar-collapse">
 
-                    <!-- /menu footer buttons -->
-                    <div class="sidebar-footer hidden-small">
-                        <a href="<?= Url::to(['site/logout']) ?>" data-method="post" data-toggle="tooltip"
-                           data-placement="top" title="Logout">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
                     </div>
-                    <!-- /menu footer buttons -->
+                </div>
+            </nav>
+
+            <div class="content">
+                <div class="container-fluid">
+                    <?= $content ?>
                 </div>
             </div>
-
-            <!-- top navigation -->
-            <div class="top_nav">
-
-            </div>
-            <!-- /top navigation -->
-
-            <!-- page content -->
-            <div class="right_col" role="main">
-                <?php if (isset($this->params['h1'])): ?>
-                    <div class="page-title">
-                        <div class="title_left">
-                            <h1><?= $this->params['h1'] ?></h1>
-                        </div>
-                        <div class="title_right">
-                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for...">
-                                    <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
-                            </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endif; ?>
-                <div class="clearfix"></div>
-
-                <?= $content ?>
-            </div>
-            <!-- /page content -->
-            <!-- footer content -->
-            <footer>
-
-            </footer>
-            <!-- /footer content -->
         </div>
-
     </div>
-
-    <div id="custom_notifications" class="custom-notifications dsp_none">
-        <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
-        </ul>
-        <div class="clearfix"></div>
-        <div id="notif-group" class="tabbed_notifications"></div>
-    </div>
-    <!-- /footer content -->
     <?php $this->endBody(); ?>
     </body>
     </html>

@@ -3,10 +3,10 @@
 namespace app\controllers\admin;
 
 use Yii;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use app\forms\LoginForm;
+use app\forms\admin\LoginForm;
+
 /**
  * Site controller
  */
@@ -19,7 +19,7 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
@@ -33,13 +33,14 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
             ],
         ];
     }
+
     /**
      * @inheritdoc
      */
@@ -51,6 +52,7 @@ class SiteController extends Controller
             ],
         ];
     }
+
     /**
      * Displays homepage.
      *
@@ -60,6 +62,7 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+
     /**
      * Login action.
      *
@@ -79,6 +82,7 @@ class SiteController extends Controller
             ]);
         }
     }
+
     /**
      * Logout action.
      *

@@ -34,7 +34,7 @@ services:
       file: common-compose.yml
       service: mysql
     volumes:
-      - ./data/mysql:/var/lib/mysql
+      - ./data/mysql-local:/var/lib/mysql
       - ./logs/mysql:/var/log/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root

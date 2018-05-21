@@ -69,6 +69,7 @@ $config = [
             'rules' => require 'urls.php',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => true
         ],
 
     ],
