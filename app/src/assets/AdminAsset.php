@@ -15,6 +15,7 @@ class AdminAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/admin/site.css',
+        'css/admin/material-dashboard.css',
     ];
     public $js = [
     ];

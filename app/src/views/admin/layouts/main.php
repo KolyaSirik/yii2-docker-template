@@ -7,12 +7,12 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii2mod\alert\Alert;
 \yii2mod\alert\AlertAsset::register($this);
-\app\assets\AdminAsset::register($this);
 \app\assets\MaterialAsset::register($this);
+\app\assets\AdminAsset::register($this);
 ?>
 <?php $this->beginPage(); ?>
     <!DOCTYPE html>
-    <html lang="<?= Yii::$app->language ?>">
+    <html lang="<?= Yii::$app->language ?>" class="perfect-scrollbar-off">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta charset="<?= Yii::$app->charset ?>"/>
@@ -39,6 +39,26 @@ use yii2mod\alert\Alert;
                     </a>
                 </div>
                 <div class="sidebar-wrapper">
+                    <div class="user">
+                        <div class="info">
+                            <a data-toggle="collapse" href="#collapseExample" class="collapsed" aria-expanded="false">
+                            <span>
+                                <?= \Yii::$app->user->identity->username ?>
+                                <b class="caret"></b>
+                            </span>
+                            </a>
+                            <div class="clearfix"></div>
+                            <div class="collapse" id="collapseExample" aria-expanded="false" style="height: 0px;">
+                                <ul class="nav">
+                                    <li>
+                                        <?= Html::a('Logout', ['admin/site/logout'], [
+                                            'data' => ['method' => 'post'],
+                                        ]); ?>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <?= $this->render('leftColumn') ?>
                 </div>
                 <div class="sidebar-background" style="background-image: url(/img/sidebar.jpg) "></div>
